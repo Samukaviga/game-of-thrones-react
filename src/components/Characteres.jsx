@@ -7,7 +7,7 @@ const Characteres = () => {
     const [characteres, setCharacteres] = useState([]);
     const { response: items, loading, error } = useCharacteres();
 
-    console.log(items)
+    //console.log(items)
   return (
     <div className="main">
         <div className='text-center flex flex-col justify-center items-center h-[800px]'>

@@ -5,6 +5,7 @@ import { getCharacteres } from "../services/characterService"
 export const useCharacteres = () => {
 
     const [response, setResponse] = useState(null)
+    const [houseStark, setHouseStark] = useState(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
 
@@ -15,6 +16,11 @@ export const useCharacteres = () => {
             try {
                 setLoading(true)
                 const data = await getCharacteres()
+
+                const starkResponse = data.filter((char) => char.family === 'House Stark')
+
+                setHouseStark(starkResponse);
+
                 setResponse(data)
 
             } catch (e) {
@@ -31,7 +37,7 @@ export const useCharacteres = () => {
     }, [])
 
 
-    return { response, loading, error }
+    return { response, houseStark, loading, error }
 
 
 }
